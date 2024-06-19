@@ -1,0 +1,17 @@
+---
+- name: Install nginx
+  hosts: all
+  become: true
+
+  tasks:
+
+  - name: Install nginx
+  #-shell: apt intall nginx (we dont know if apt is present in the machine so we use 'apt' module given by ansible itself)
+    apt: 
+      name: nginx
+      state: present
+  - name: Start nginx
+   #shell: systemctl start nginx
+    service: 
+      name: nginx
+      state: started
